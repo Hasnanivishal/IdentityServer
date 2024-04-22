@@ -1,0 +1,11 @@
+# Visual Studio temporary files
+.vs/
+/bin/
+/obj/
+
+# Compiled files
+*.dll
+*.exe
+
+# NuGet package directory
+packages/
