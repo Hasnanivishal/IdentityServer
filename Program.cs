@@ -95,7 +95,8 @@ builder.Services.AddCors(policyBuilder =>
 {
     policyBuilder.AddPolicy("AllowedClients", options =>
     {
-        options.WithOrigins("https://localhost:4200")
+        options.AllowAnyOrigin()
+        // options.WithOrigins("https://localhost:30288")
         .AllowAnyHeader()
         .AllowAnyMethod();
     });
@@ -138,6 +139,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"Middlewar is hit by request....{context.Request.Host}/{context.Request.Path}");
+
+    await next.Invoke(context);
+});
 
 app.UseHttpsRedirection();
 

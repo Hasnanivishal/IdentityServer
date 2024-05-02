@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myidentityserver
+  template:
+    metadata:
+      labels:
+        app: myidentityserver
+    spec:
+      containers:
+        - name: myidentityserver
+          image: hasnanivishal/myidentityserver:latest
